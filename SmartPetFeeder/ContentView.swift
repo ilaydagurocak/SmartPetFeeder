@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // Background gradient
+                
                 LinearGradient(gradient: Gradient(colors: [.blue, .purple]),
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
@@ -24,7 +24,6 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    // Navigate to LoginView
                     NavigationLink {
                         LoginView()
                     } label: {
@@ -39,7 +38,7 @@ struct ContentView: View {
                             .padding(.horizontal)
                     }
                     
-                    // Navigate to RegisterView
+                    
                     NavigationLink {
                         RegisterView()
                     } label: {
@@ -64,7 +63,7 @@ struct ContentView: View {
         }
     }
     
-    // MARK: – FCM Token Alma
+    
     private func fetchFCMToken() {
         Messaging.messaging().token { token, error in
             if let error = error {
@@ -76,11 +75,11 @@ struct ContentView: View {
                 return
             }
             fcmToken = token
-            print("📲 FCM Token:", token)
+            print("FCM Token:", token)
         }
     }
     
-    // MARK: – Push Bildirim Gönderme
+    // Push Bildirim
     private func sendPush(to token: String, title: String, body: String) {
         guard let url = URL(string: "http://192.168.1.4:3000/send-notification") else {
             print("⚠️ URL hatalı")

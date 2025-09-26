@@ -10,19 +10,19 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State private var navigateToMain = false
 
-    // Pet info fetched from Firestore
+    // Pet info
     @State private var petName: String = ""
-    @State private var petEmoji: String = "🐾" // default placeholder
+    @State private var petEmoji: String = "🐾"
 
     @State private var isLoading = false
 
-    // Firestore reference
+    
     private let db = Firestore.firestore()
 
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background gradient (purple to blue)
+                
                 LinearGradient(
                     gradient: Gradient(colors: [.purple, .blue]),
                     startPoint: .topLeading,
@@ -81,7 +81,7 @@ struct LoginView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        // MainView modal olarak açılıyor; böylece geri butonu çıkmıyor.
+        
         .fullScreenCover(isPresented: $navigateToMain) {
             MainView(petName: petName, petEmoji: petEmoji)
         }

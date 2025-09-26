@@ -14,13 +14,13 @@ struct RegisterView: View {
     
     let petTypes = ["Cat", "Dog"]
     
-    // Firestore reference
+    
     private let db = Firestore.firestore()
     
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background gradient
+                
                 LinearGradient(gradient: Gradient(colors: [.purple, .blue]),
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
@@ -53,7 +53,7 @@ struct RegisterView: View {
                         .cornerRadius(10)
                         .padding(.horizontal)
                     
-                    // Pet type picker
+                    
                     Picker("Pet Type", selection: $petType) {
                         ForEach(petTypes, id: \.self) { type in
                             Text(type)
@@ -68,7 +68,7 @@ struct RegisterView: View {
                             .padding(.horizontal)
                     }
                     
-                    // Register button
+                    
                     Button {
                         registerUser()
                     } label: {
@@ -88,7 +88,7 @@ struct RegisterView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        // MainView modal olarak açılıyor.
+        
         .fullScreenCover(isPresented: $navigateToMain) {
             MainView(petName: petName, petEmoji: petType == "Cat" ? "🐱" : "🐶")
         }
